@@ -1,9 +1,9 @@
 <?php 
 // DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','');
-define('DB_NAME','library');
+define('DB_HOST','localhost:3306');
+define('DB_USER','db_admin');
+define('DB_PASS','pass');
+define('DB_NAME','library_db');
 // Establish database connection.
 try
 {

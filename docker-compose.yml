@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db: 
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=library_db
+      - MYSQL_USER=db_admin
+      - MYSQL_PASSWORD=pass # this should live in a env var
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1 # equivalent to True
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d" # this is how we persist a sql db even when container stops
+  www:
+    image: library        
+    ports:
+      - 8002:80
+     
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
